@@ -17,7 +17,9 @@ class ReactionTypeFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+         'type'=> fake()->text(10),
+         'created_at'=>now(),
+         'updated_at'=>now()
         ];
     }
 }

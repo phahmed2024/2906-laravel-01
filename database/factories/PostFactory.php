@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\PostStatus;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -20,7 +21,10 @@ class PostFactory extends Factory
         return [
             'title' => fake()->sentence(5),
             'body' => fake()->paragraph(1),
-            'user_id' => User::all()->random()->id
+            'user_id' => User::all()->random()->id,
+            'post_status_id' => PostStatus::all()->random()->id,
+            'created_at' => now(),
+            'updated_at' => now()
         ];
     }
 }
