@@ -30,7 +30,8 @@ class UserFactory extends Factory
             'mobile' => fake()->unique()->e164phoneNumber(),
             'password' => 'password',
             'remember_token' => Str::random(10),
-        ];
+            'roles' => fake()->randomElement(['admin', 'user', 'moderator', 'user,reviewer', 'reviewer,creator']),
+               ];
     }
 
     /**

@@ -13,6 +13,18 @@ class PostStatusSeeder extends Seeder
      */
     public function run(): void
     {
-        PostStatus::factory(10)->create();
+        $postStatuses = [
+            'Pending',
+            'Puplished',
+            'Reviewed',
+            'Postponed',
+            'Canceled',
+        ];
+
+        foreach ($postStatuses as $postStatus) {
+            PostStatus::create([
+                'type' => $postStatus,
+            ]);
+        }
     }
 }

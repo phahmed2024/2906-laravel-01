@@ -14,6 +14,17 @@ class ReactionTypeSeeder extends Seeder
      */
     public function run(): void
     {
-        ReactionType::factory(10)->create();
+        $reactions = [
+            'Like',
+            'Dislike',
+            'Love',
+            'Angry',
+            'Sad',
+        ];
+        foreach ($reactions as $reaction) {
+            ReactionType::create([
+                'type' => $reaction,
+            ]);
+        }
     }
 }
