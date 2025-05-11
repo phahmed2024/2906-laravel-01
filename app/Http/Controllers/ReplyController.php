@@ -13,7 +13,8 @@ class ReplyController extends Controller
      */
     public function index()
     {
-        //
+       $replies=Reply::all(["id","reply"]);
+       return $replies;
     }
 
     /**
@@ -37,7 +38,7 @@ class ReplyController extends Controller
      */
     public function show(Reply $reply)
     {
-        //
+       return $reply;
     }
 
     /**

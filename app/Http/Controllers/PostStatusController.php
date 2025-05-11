@@ -13,7 +13,8 @@ class PostStatusController extends Controller
      */
     public function index()
     {
-        //
+        $post_statuses = PostStatus::all(["id", "type"]);
+        return $post_statuses;
     }
 
     /**
@@ -37,7 +38,7 @@ class PostStatusController extends Controller
      */
     public function show(PostStatus $postStatus)
     {
-        //
+        return $postStatus;
     }
 
     /**

@@ -13,7 +13,8 @@ class ReactionController extends Controller
      */
     public function index()
     {
-        //
+       $reactions=Reaction::all(["id","user_id","reaction_type_id"]);
+       return $reactions;
     }
 
     /**
@@ -37,7 +38,7 @@ class ReactionController extends Controller
      */
     public function show(Reaction $reaction)
     {
-        //
+       return $reaction;
     }
 
     /**

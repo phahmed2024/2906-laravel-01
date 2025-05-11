@@ -21,7 +21,9 @@ class CommentController extends Controller
      */
     public function create()
     {
-        //
+        $comments = Comment::all(["id", "comment", "user_id", "post_id"]);
+        return $comments;
+
     }
 
     /**
@@ -37,7 +39,7 @@ class CommentController extends Controller
      */
     public function show(Comment $comment)
     {
-        //
+        return $comment;
     }
 
     /**

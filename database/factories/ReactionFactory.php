@@ -19,11 +19,11 @@ class ReactionFactory extends Factory
      */
     public function definition(): array
     {
-        return [
-            'user_id'=>User::all()->random()->id,
-            'reaction_type_id'=>ReactionType::all()->random()->id,
-            'reactionable_id'=>fake()->randomNumber(),
-            'reactionable_type'=>fake()->randomElement(['post', 'comment','reply']),
-        ];
+        // return [
+        //     'user_id'=>User::all()->random()->id,
+        //     'reaction_type_id'=>ReactionType::all()->random()->id,
+        //     'reactionable_id'=>fake()->randomNumber(),
+        //     'reactionable_type'=>fake()->randomElement(['post', 'comment','reply']),
+        // ];
     }
 }

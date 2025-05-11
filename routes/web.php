@@ -1,19 +1,45 @@
 <?php
 
-use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\ReactionController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\PostStatusController;
+use App\Http\Controllers\ReactionTypeController;
+use App\Http\Controllers\ReplyController;
 use Illuminate\Support\Facades\Route;
- 
+
 
 Route::view('/', 'home');
 
-// Route::get('products', 'App\Http\Controllers\products@all' );
+Route::resources([
+    'posts' => PostController::class,
+    'comments' => CommentController::class,
+    'replies' => ReplyController::class,
+    'post-statuses' => PostStatusController::class,
+    'reaction-types' => ReactionTypeController::class,
+    'users' => UserController::class,
+    'reactions' => ReactionController::class,
+]);
 
-// Route::get('products', [ProductController::class, 'index'] );
-// Route::get('products/create', [ProductController::class, 'create'] );
-// Route::post('products', [ProductController::class, 'store'] );
-// Route::get('products/{product}', [ProductController::class, 'show'] );
-// Route::get('products/{product}/edit', [ProductController::class, 'edit'] );
-// Route::put('products', [ProductController::class, 'update'] );
-// Route::delete('products', [ProductController::class, 'destroy'] );
 
-Route::resource('products', ProductController::class);
+// Route::get('/init', function () {
+//     $models = [
+//         'User',
+//         'ReactionType',
+//         'PostStatus',
+//         'Post',
+//         'Comment',
+//         'Reply',
+//         'Reaction',
+//     ];
+
+//     foreach ($models as $model) {
+//         // php artisan make:model ModelName -a
+//         Artisan::call('make:model', ['name' => $model, '-a' => true]);
+
+//         sleep(1);
+//     }
+
+//     return 'DONE';
+// });

@@ -2,19 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ReactionType;
-use App\Http\Requests\StoreReactionTypeRequest;
-use App\Http\Requests\UpdateReactionTypeRequest;
+use App\Models\User;
+use App\Http\Requests\StoreUserRequest;
+use App\Http\Requests\UpdateUserRequest;
 
-class ReactionTypeController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-       $reactionTypes=ReactionType::all(["id","type"]);
-       return $reactionTypes;
+        $users = User::all(["id", "name", "email"]);
+        return $users;
     }
 
     /**
@@ -28,7 +28,7 @@ class ReactionTypeController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreReactionTypeRequest $request)
+    public function store(StoreUserRequest $request)
     {
         //
     }
@@ -36,15 +36,15 @@ class ReactionTypeController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(ReactionType $reactionType)
+    public function show(User $user)
     {
-        return $reactionType;
+        return $user;
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(ReactionType $reactionType)
+    public function edit(User $user)
     {
         //
     }
@@ -52,7 +52,7 @@ class ReactionTypeController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateReactionTypeRequest $request, ReactionType $reactionType)
+    public function update(UpdateUserRequest $request, User $user)
     {
         //
     }
@@ -60,7 +60,7 @@ class ReactionTypeController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(ReactionType $reactionType)
+    public function destroy(User $user)
     {
         //
     }
