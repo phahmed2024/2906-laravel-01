@@ -1,16 +1,23 @@
 <?php
 
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ReactionController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\PostStatusController;
 use App\Http\Controllers\ReactionTypeController;
 use App\Http\Controllers\ReplyController;
+
 use Illuminate\Support\Facades\Route;
 
 
 Route::view('/', 'home');
+
+Route::prefix('dashboard')->controller(DashboardController::class)->group(function () {
+    Route::get('statistics', 'statistics');
+});
+
 
 Route::resources([
     'posts' => PostController::class,
