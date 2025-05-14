@@ -14,6 +14,7 @@ class ReplyController extends Controller
     public function index()
     {
        $replies=Reply::all(["id","reply"]);
+       $replies = Reply::with(['comment', 'user'])->get();
        return $replies;
     }
 

@@ -9,4 +9,5 @@ class PostStatus extends Model
 {
     /** @use HasFactory<\Database\Factories\PostStatusFactory> */
     use HasFactory;
+    
 }

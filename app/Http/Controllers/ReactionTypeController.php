@@ -13,8 +13,9 @@ class ReactionTypeController extends Controller
      */
     public function index()
     {
-       $reactionTypes=ReactionType::all(["id","type"]);
-       return $reactionTypes;
+        $reactionTypes = ReactionType::all(["id", "type"]);
+
+        return $reactionTypes;
     }
 
     /**

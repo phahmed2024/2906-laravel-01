@@ -13,7 +13,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all(["id", "name", "email"]);
+      //  $users = User::all(["id", "name", "email"]);
+        $users = User::with(['posts', 'comments', 'replies'])->get();
         return $users;
     }
 

@@ -13,7 +13,8 @@ class CommentController extends Controller
      */
     public function index()
     {
-        $comments = Comment::all(["id", "comment", "user_id", "post_id"]);
+
+        $comments = Comment::with(['post', 'user', 'replies'])->get();
         return $comments;
     }
 

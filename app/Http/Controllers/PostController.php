@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
+use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
 {
@@ -13,9 +14,12 @@ class PostController extends Controller
      */
     public function index()
     {
-        
-       $posts=Post::all(["id","title","body"]);
-       return $posts;
+
+        //    $posts=Post::all(["id","title","body"]);
+
+
+        $posts = Post::with(['post_status', 'user', 'comments'])->get();
+        return $posts;
     }
 
     /**
@@ -39,7 +43,13 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        return $post;
+        $result = Post::join('post_statuses', 'post_statuses.id', '=', 'posts.post_status_id')
+            ->join('users', 'users.id', '=', 'posts.user_id')
+            ->select(['posts.id AS post_id', 'title AS Post Title', 'body', 'type', 'name', 'post_statuses.id AS post_status_id'])
+            ->where('posts.id', $post->id)
+            ->orderBy('posts.id')
+            ->get();
+        return $result;
     }
 
     /**
