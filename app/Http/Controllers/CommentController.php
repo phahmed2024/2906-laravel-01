@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\CommentResource;
 use App\Models\Comment;
 use App\Http\Requests\StoreCommentRequest;
 use App\Http\Requests\UpdateCommentRequest;
@@ -14,8 +15,10 @@ class CommentController extends Controller
     public function index()
     {
 
-        $comments = Comment::with(['post', 'user', 'replies'])->get();
-        return $comments;
+      //  $comments = Comment::with(['post', 'user', 'replies'])->get();
+         $comments = Comment::all();
+        $ready_comments = CommentResource::collection($comments);
+        return $ready_comments;
     }
 
     /**

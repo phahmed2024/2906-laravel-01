@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\PostStatusResource;
 use App\Models\PostStatus;
 use App\Http\Requests\StorePostStatusRequest;
 use App\Http\Requests\UpdatePostStatusRequest;
@@ -14,8 +15,10 @@ class PostStatusController extends Controller
     public function index()
     {
         $post_statuses = PostStatus::all(["id", "type"]);
-      
-        return $post_statuses;
+
+        $Ready_post_statuses = PostStatusResource::collection($post_statuses);
+        
+        return $Ready_post_statuses;
     }
 
     /**

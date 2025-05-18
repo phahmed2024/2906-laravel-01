@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\PostResource;
 use App\Models\Post;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
@@ -17,9 +18,11 @@ class PostController extends Controller
 
         //    $posts=Post::all(["id","title","body"]);
 
+        $posts = Post::with(['post_status', 'user', 'comments','reactions'])->get();
 
-        $posts = Post::with(['post_status', 'user', 'comments'])->get();
-        return $posts;
+        $ready_posts=PostResource::collection($posts);
+
+        return $ready_posts;
     }
 
     /**
@@ -43,13 +46,15 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        $result = Post::join('post_statuses', 'post_statuses.id', '=', 'posts.post_status_id')
-            ->join('users', 'users.id', '=', 'posts.user_id')
-            ->select(['posts.id AS post_id', 'title AS Post Title', 'body', 'type', 'name', 'post_statuses.id AS post_status_id'])
-            ->where('posts.id', $post->id)
-            ->orderBy('posts.id')
-            ->get();
-        return $result;
+        // $result = Post::join('post_statuses', 'post_statuses.id', '=', 'posts.post_status_id')
+        //     ->join('users', 'users.id', '=', 'posts.user_id')
+        //     ->select(['posts.id AS post_id', 'title AS Post Title', 'body', 'type', 'name', 'post_statuses.id AS post_status_id'])
+        //     ->where('posts.id', $post->id)
+        //     ->orderBy('posts.id')
+        //     ->get();
+        // return $result;
+        // return $post->load(['post_status', 'user', 'comments', 'reactions']);
+
     }
 
     /**

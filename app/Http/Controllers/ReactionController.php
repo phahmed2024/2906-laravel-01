@@ -13,7 +13,7 @@ class ReactionController extends Controller
      */
     public function index()
     {
-       $reactions=Reaction::all(["id","user_id","reaction_type_id"]);
+       $reactions=Reaction::with("reaction_types")->get();
        return $reactions;
     }
 

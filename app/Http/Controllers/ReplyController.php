@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ReplyResource;
 use App\Models\Reply;
 use App\Http\Requests\StoreReplyRequest;
 use App\Http\Requests\UpdateReplyRequest;
@@ -14,7 +15,9 @@ class ReplyController extends Controller
     public function index()
     {
        $replies=Reply::all(["id","reply"]);
-       $replies = Reply::with(['comment', 'user'])->get();
+      // $replies = Reply::with(['comment', 'user'])->get();
+         $replies = Reply::get();
+       $ready_replies = ReplyResource::collection($replies);
        return $replies;
     }
 
